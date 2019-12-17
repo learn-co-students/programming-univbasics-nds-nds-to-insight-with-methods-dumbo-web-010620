@@ -9,19 +9,10 @@ require 'pp'
 def directors_totals(nds)
   result = {}
   row_index = 0 
-  while row_index < directors_database.length do
-    column_index = 0
-    total_gross = 0
+  while row_index < nds.size do
     
-    d_name = directors_database[row_index][:name]
-    result[d_name]
-    
-    while column_index < directors_database[row_index][:movies].length do
-      total_gross += directors_database[row_index][:movies][column_index][:worldwide_gross]
-      column_index += 1
-      
-    end  
-    result[d_name] = total_gross
+    director = nds[row_index]
+    result[director[:name]] = gross_for_director(director)
     row_index += 1
     
   end
